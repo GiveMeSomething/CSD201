@@ -15,18 +15,22 @@ public class Tester {
         GraphRepMatrix matrix = new GraphRepMatrix();
         matrix.add(a, b, c, d, e, f, g);
         matrix.display();
+
+//        //Test 1
 //        matrix.connect(a, c, f, d);
 //        matrix.connect(b, d, e);
 //        matrix.connect(c, a, f);
 //        matrix.connect(d, a, b, e, f);
 //        matrix.connect(e, b, d);
 //        matrix.connect(f, a, c, d);
-
+//
+//        //Test 2
 //        matrix.connect(a, c, d);
 //        matrix.connect(b);
 //        matrix.connect(c, f);
 //        matrix.connect(f, e, b, g);
 
+        //Test 3
         matrix.connect(a, e, g);
         matrix.connect(b, e, g, c);
         matrix.connect(c, d, f);
