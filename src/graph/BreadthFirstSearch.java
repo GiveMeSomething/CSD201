@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class BreadthFirstSearch {
     public void traverse(GraphRepMatrix matrix, Vertex root) {
-        ArrayList<Vertex> identifier = matrix.graphMatrix.get(0);
+        ArrayList<Vertex> identifier = matrix.identifier;
         if (!identifier.contains(root)) {
             return;
         }
@@ -29,10 +29,10 @@ public class BreadthFirstSearch {
                 continue;
             }
 
-            ArrayList<Vertex> connected = matrix.graphMatrix.get(currentPos);
+            ArrayList<Integer> connected = matrix.graphMatrix.get(currentPos);
             for (int i = 1; i < connected.size(); i++) {
-                if (connected.get(i).value == 1 && !matrix.graphMatrix.get(0).get(i).visited) {
-                    Vertex target = matrix.graphMatrix.get(0).get(i);
+                if (connected.get(i) == 1 && !matrix.identifier.get(i).visited) {
+                    Vertex target = matrix.identifier.get(i);
                     if (!vertexQueue.contains(target)) {
                         vertexQueue.add(target);
                     }
