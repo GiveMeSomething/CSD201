@@ -7,8 +7,8 @@ package graph;
 import java.util.ArrayList;
 
 public class GraphRepMatrix {
-    ArrayList<ArrayList<Integer>> graphMatrix; //la ma tran de hien thi cac node da ket noi voi nhau
-    ArrayList<Vertex> identifier; //tap hop cac diem co trong ma tran, dung de xac dinh vi tri trong ma tran
+    public ArrayList<ArrayList<Integer>> graphMatrix; //la ma tran de hien thi cac node da ket noi voi nhau
+    public ArrayList<Vertex> identifier; //tap hop cac diem co trong ma tran, dung de xac dinh vi tri trong ma tran
 
     public GraphRepMatrix() {
         this.graphMatrix = new ArrayList<>();
@@ -19,7 +19,7 @@ public class GraphRepMatrix {
     public void initMatrix() {
         for (int i = 0; i < this.graphMatrix.size(); ++i) {
             for (int j = 0; j < this.graphMatrix.size(); ++j) {
-                this.graphMatrix.get(i).add(0);
+                this.graphMatrix.get(i).add(-1);
             }
         }
     }
@@ -45,8 +45,13 @@ public class GraphRepMatrix {
         }
     }
 
-    //ket noi diem a va b
+    //ket noi diem a va b (khong quan trong gia tri duong di)
     public void connect(Vertex a, Vertex b) {
+        connect(a, b, 1);
+    }
+
+    //ket noi 2 diem a va b nhung co gia tri duong di
+    public void connect(Vertex a, Vertex b, int value){
         int firstPos = -1;
         int secondPos = -1;
         //tim vi tri cua 2 diem trong tham so
@@ -68,8 +73,8 @@ public class GraphRepMatrix {
         }
         //set vi tri da tim thay bang 1
         //vi tri duoc xac dinh qua identifier
-        this.graphMatrix.get(firstPos).set(secondPos, 1);
-        this.graphMatrix.get(secondPos).set(firstPos, 1);
+        this.graphMatrix.get(firstPos).set(secondPos, value);
+        this.graphMatrix.get(secondPos).set(firstPos, value);
     }
 
     //in ra ma tran (duyet qua cac phan tu va in ra)
